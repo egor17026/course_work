@@ -1,0 +1,5 @@
+__pycache__/
+venv/
+.qtcreator/
+*.pyc
+.DS_Store

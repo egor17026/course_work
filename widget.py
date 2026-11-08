@@ -1,8 +1,12 @@
 import sys
-from PySide6.QtWidgets import QApplication, QWidget
+from PySide6.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QMessageBox
 from ui_form import Ui_Widget
 from firebird.driver import connect, driver_config
 from SalaryDB import CreateDatasource
+from admin_window import AdminWindow
+from registration_window import RegistrationWindow
+from hr_window import HRWindow
+from accountant_window import AccountantWindow
 
 
 class RDB:
@@ -50,14 +54,28 @@ class Widget(QWidget):
 
         if password == db_hash:
             if is_active == 1:
-                print("Успешный вход, ваша роль: {role_id}")
+                print(f"Успешный вход, ваша роль: {role_id}")
+
+                if role_id == 1:  # Если это админ
+                    self.admin_win = AdminWindow()
+                    self.admin_win.show()
+                    self.hide()
+                elif role_id == 2:
+                    self.hr_win = HRWindow()
+                    self.hr_win.show()
+                    self.hide()
+                elif role_id == 3:
+                    self.acc_win = AccountantWindow()
+                    self.acc_win.show()
+                    self.hide()
             else:
                 print("Аккаунт не подтвержден")
         else:
-            print("Невершный пароль, проверьте данные или попробуйте ещё раз")
+            print("Неверный пароль, проверьте данные или попробуйте ещё раз")
 
     def registracia(self):
-        print("Кнопка нажата")
+        self.reg_window = RegistrationWindow()
+        self.reg_window.show()
 
 if __name__ == "__main__":
     db = RDB()

@@ -2,6 +2,20 @@
     "files": [
         "widget.py",
         "form.ui",
-        "SalaryDB.py"
+        "SalaryDB.py",
+        "adminwindow.ui",
+        "admin_window.py",
+        "registration.ui",
+        "registration_window.py",
+        "ui_registration.py",
+        "hrwindow.ui",
+        "ui_hrwindow.py",
+        "hr_window.py",
+        "accwindow.ui",
+        "ui_accwindow.py",
+        "accountant_window.py",
+        "addworker.ui",
+        "ui_addworker.py",
+        "add_worker_window.py"
     ]
 }

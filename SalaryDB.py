@@ -66,8 +66,46 @@ class SalaryDB:
         finally:
             conn.close()
 
+    def add_vacation(self, worker_id, date_start, date_end, vacation_type):
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute("SELECT DATEDIFF(DAY, ?, ?) + 1 FROM RDB$DATABASE", (date_start, date_end))
+            days = cur.fetchone()[0]
+
+            cur.execute("""
+                INSERT INTO vacations (vacation_id, worker_id, vacation_type, date_start, date_end, days_count)
+                VALUES (NEXT VALUE FOR GEN_VACATIONS_ID, ?, ?, ?, ?, ?)
+            """, (worker_id, vacation_type, date_start, date_end, days))
+            conn.commit()
+            return True
+        except Exception as e:
+            print(f"Ошибка отпуска: {e}")
+            return False
+        finally:
+            conn.close()
+
+    def add_sick_leaves(self, worker_id, date_start, date_end, list_number):
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute("SELECT DATEDIFF(DAY, ?, ?) + 1 FROM RDB$DATABASE", (date_start, date_end))
+            days = cur.fetchone()[0]
+
+            cur.execute("""
+                INSERT INTO sick_leaves (sick_leave_id, worker_id, date_start, date_end, days_count, list_number)
+                VALUES (NEXT VALUE FOR GEN_SICK_LEAVES_ID, ?, ?, ?, ?, ?)
+            """, (worker_id, date_start, date_end, days, list_number))
+            conn.commit()
+            return True
+        except Exception as e:
+            print(f"Ошибка больничного: {e}")
+            return False
+        finally:
+            conn.close()
+
     def get_all_positions(self):
-        conn = self.get_connection()  # Скобки!
+        conn = self.get_connection()
         cur = conn.cursor()
         try:
             cur.execute("SELECT position_id, position_name FROM positions")
@@ -75,8 +113,8 @@ class SalaryDB:
         finally:
             conn.close()
 
-    def get_all_departments(self):  # Множественное число для порядка
-        conn = self.get_connection()  # Скобки!
+    def get_all_departments(self):
+        conn = self.get_connection()
         cur = conn.cursor()
         try:
             cur.execute("SELECT department_id, department_name FROM departments")
@@ -183,3 +221,4 @@ def CreateDatasource():
     if _salary_db_instance is None:
         _salary_db_instance = SalaryDB()
     return _salary_db_instance
+

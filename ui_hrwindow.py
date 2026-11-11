@@ -37,13 +37,19 @@ class Ui_Form(object):
         __qtablewidgetitem4 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(0, 120, 921, 401))
+        self.tableWidget.setGeometry(QRect(0, 120, 931, 411))
         self.btn_add = QPushButton(Form)
         self.btn_add.setObjectName(u"btn_add")
         self.btn_add.setGeometry(QRect(642, 80, 151, 36))
         self.btn_fire = QPushButton(Form)
         self.btn_fire.setObjectName(u"btn_fire")
         self.btn_fire.setGeometry(QRect(810, 80, 103, 36))
+        self.btn_sick = QPushButton(Form)
+        self.btn_sick.setObjectName(u"btn_sick")
+        self.btn_sick.setGeometry(QRect(462, 80, 171, 36))
+        self.btn_vacation = QPushButton(Form)
+        self.btn_vacation.setObjectName(u"btn_vacation")
+        self.btn_vacation.setGeometry(QRect(290, 80, 171, 36))
 
         self.retranslateUi(Form)
 
@@ -64,5 +70,7 @@ class Ui_Form(object):
         ___qtablewidgetitem4.setText(QCoreApplication.translate("Form", u"\u0421\u0442\u0430\u0442\u0443\u0441", None))
         self.btn_add.setText(QCoreApplication.translate("Form", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u0430", None))
         self.btn_fire.setText(QCoreApplication.translate("Form", u"\u0423\u0432\u043e\u043b\u0438\u0442\u044c", None))
+        self.btn_sick.setText(QCoreApplication.translate("Form", u"\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0431\u043e\u043b\u044c\u043d\u0438\u0447\u043d\u044b\u0439", None))
+        self.btn_vacation.setText(QCoreApplication.translate("Form", u"\u041e\u0444\u043e\u0440\u043c\u0438\u0442\u044c \u043e\u0442\u043f\u0443\u0441\u043a", None))
     # retranslateUi
 

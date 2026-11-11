@@ -16,6 +16,9 @@
         "accountant_window.py",
         "addworker.ui",
         "ui_addworker.py",
-        "add_worker_window.py"
+        "add_worker_window.py",
+        "add_vacation_sick.ui",
+        "ui_add_vacation_sick.py",
+        "add_absence_window.py"
     ]
 }

@@ -19,6 +19,12 @@
         "add_worker_window.py",
         "add_vacation_sick.ui",
         "ui_add_vacation_sick.py",
-        "add_absence_window.py"
+        "add_absence_window.py",
+        "hr_menu.ui",
+        "hr_menu.py",
+        "hr_orders.ui",
+        "hr_orders.py",
+        "timesheet.ui",
+        "timesheet_window.py"
     ]
 }

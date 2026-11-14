@@ -7,6 +7,7 @@ from admin_window import AdminWindow
 from registration_window import RegistrationWindow
 from hr_window import HRWindow
 from accountant_window import AccountantWindow
+from hr_menu import HRMenu
 
 
 class RDB:
@@ -22,7 +23,7 @@ class RDB:
     def get_connection(self):
         try:
             conn = connect(self.dbpath, charset=self.charset)
-            print("Подключение к БД успешно!")
+            print("Подключение к БД успешно")
             return conn
         except Exception as e:
             print(f"Ошибка подключения: {e}")
@@ -56,12 +57,12 @@ class Widget(QWidget):
             if is_active == 1:
                 print(f"Успешный вход, ваша роль: {role_id}")
 
-                if role_id == 1:  # Если это админ
+                if role_id == 1:
                     self.admin_win = AdminWindow()
                     self.admin_win.show()
                     self.hide()
                 elif role_id == 2:
-                    self.hr_win = HRWindow()
+                    self.hr_win = HRMenu()
                     self.hr_win.show()
                     self.hide()
                 elif role_id == 3:

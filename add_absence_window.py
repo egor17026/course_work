@@ -21,7 +21,7 @@ class AddAbsenceWindow(QWidget):
         type_text = self.ui.combo_type.currentText()
 
         if not date_start or not date_end:
-            QMessageBox.warning(self, "Ошибка", "Введите даты (ГГГГ-ММ-ДД)!")
+            QMessageBox.warning(self, "Ошибка", "Введите даты (пример 01.01.2001)!")
             return
 
         if "больничн" in type_text.lower():

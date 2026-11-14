@@ -104,6 +104,32 @@ class SalaryDB:
         finally:
             conn.close()
 
+    def get_all_vacations(self):
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute("""
+                SELECT v.vacation_id, w.last_name, w.first_name, v.vacation_type, v.date_start, v.date_end, v.days_count
+                FROM vacations v
+                JOIN workers w ON v.worker_id = w.worker_id
+            """)
+            return cur.fetchall()
+        finally:
+            conn.close()
+
+    def get_all_sick_leaves(self):
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute("""
+                SELECT s.sick_leave_id, w.last_name, w.first_name, s.date_start, s.date_end, s.days_count, s.list_number
+                FROM sick_leaves s
+                JOIN workers w ON s.worker_id = w.worker_id
+            """)
+            return cur.fetchall()
+        finally:
+            conn.close()
+
     def get_all_positions(self):
         conn = self.get_connection()
         cur = conn.cursor()
@@ -165,6 +191,42 @@ class SalaryDB:
             WHERE user_id = ?
             """, (user_id,))
             conn.commit()
+        finally:
+            conn.close()
+
+    def add_timesheet(self, worker_id, work_date, shift_type, hours_worked):
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            # Ищем максимальный ID для новой записи
+            cur.execute("SELECT MAX(timesheet_id) FROM timesheet")
+            max_id = cur.fetchone()[0]
+            new_id = (max_id + 1) if max_id else 1
+
+            cur.execute("""
+                INSERT INTO timesheet (timesheet_id, worker_id, work_date, shift_type, hours_worked)
+                VALUES (?, ?, ?, ?, ?)
+            """, (new_id, worker_id, work_date, shift_type, hours_worked))
+            conn.commit()
+            return True
+        except Exception as e:
+            print(f"Ошибка табеля: {e}")
+            return False
+        finally:
+            conn.close()
+
+    def search_workers(self, text):
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute("""
+                SELECT w.worker_id, w.last_name, w.first_name, w.middle_name, p.position_name, d.department_name, w.status
+                FROM workers w
+                JOIN positions p ON w.position_id = p.position_id
+                LEFT JOIN departments d ON w.department_id = d.department_id
+                WHERE w.last_name LIKE ? OR w.first_name LIKE ?
+            """, (f"%{text}%", f"%{text}%"))
+            return cur.fetchall()
         finally:
             conn.close()
 

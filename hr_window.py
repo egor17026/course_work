@@ -17,6 +17,7 @@ class HRWindow(QWidget):
         self.ui.btn_fire.clicked.connect(self.fire_worker_click)
         self.ui.btn_vacation.clicked.connect(self.open_vacation)
         self.ui.btn_sick.clicked.connect(self.open_sick)
+        self.ui.btn_search.clicked.connect(self.search_workers_click)
 
     def load_workers(self):
         workers = self.db.get_all_workers()
@@ -47,8 +48,25 @@ class HRWindow(QWidget):
             print("Выберите работника")
             return
         worker_id = int(self.ui.tableWidget.item(current_row, 0).text())
-        self.abs_win = AddAbsenceWindow(worker_id) # Без второго аргумента
+        self.abs_win = AddAbsenceWindow(worker_id)
         self.abs_win.show()
+
+    def search_workers_click(self):
+        text = self.ui.line_search.text()
+        workers = self.db.search_workers(text)
+
+        self.ui.tableWidget.setRowCount(0)
+
+        self.ui.tableWidget.setRowCount(len(workers))
+        for row_idx, worker in enumerate(workers):
+            worker_id, last_name, first_name, middle_name, position, department, status = worker
+            fio = f"{last_name} {first_name} {middle_name}"
+
+            self.ui.tableWidget.setItem(row_idx, 0, QTableWidgetItem(str(worker_id)))
+            self.ui.tableWidget.setItem(row_idx, 1, QTableWidgetItem(fio))
+            self.ui.tableWidget.setItem(row_idx, 2, QTableWidgetItem(str(position)))
+            self.ui.tableWidget.setItem(row_idx, 3, QTableWidgetItem(str(department)))
+            self.ui.tableWidget.setItem(row_idx, 4, QTableWidgetItem(str(status)))
 
     def fire_worker_click(self):
         current_row = self.ui.tableWidget.currentRow()

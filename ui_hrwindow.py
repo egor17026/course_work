@@ -15,8 +15,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHeaderView, QPushButton, QSizePolicy,
-    QTableWidget, QTableWidgetItem, QWidget)
+from PySide6.QtWidgets import (QApplication, QHeaderView, QLineEdit, QPushButton,
+    QSizePolicy, QTableWidget, QTableWidgetItem, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -50,6 +50,12 @@ class Ui_Form(object):
         self.btn_vacation = QPushButton(Form)
         self.btn_vacation.setObjectName(u"btn_vacation")
         self.btn_vacation.setGeometry(QRect(290, 80, 171, 36))
+        self.line_search = QLineEdit(Form)
+        self.line_search.setObjectName(u"line_search")
+        self.line_search.setGeometry(QRect(10, 80, 271, 36))
+        self.btn_search = QPushButton(Form)
+        self.btn_search.setObjectName(u"btn_search")
+        self.btn_search.setGeometry(QRect(10, 40, 103, 36))
 
         self.retranslateUi(Form)
 
@@ -72,5 +78,6 @@ class Ui_Form(object):
         self.btn_fire.setText(QCoreApplication.translate("Form", u"\u0423\u0432\u043e\u043b\u0438\u0442\u044c", None))
         self.btn_sick.setText(QCoreApplication.translate("Form", u"\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0431\u043e\u043b\u044c\u043d\u0438\u0447\u043d\u044b\u0439", None))
         self.btn_vacation.setText(QCoreApplication.translate("Form", u"\u041e\u0444\u043e\u0440\u043c\u0438\u0442\u044c \u043e\u0442\u043f\u0443\u0441\u043a", None))
+        self.btn_search.setText(QCoreApplication.translate("Form", u"\u041f\u043e\u0438\u0441\u043a", None))
     # retranslateUi
 

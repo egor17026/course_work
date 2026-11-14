@@ -100,6 +100,29 @@
     <string>Оформить отпуск</string>
    </property>
   </widget>
+  <widget class="QLineEdit" name="line_search">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>271</width>
+     <height>36</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_search">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>103</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Поиск</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

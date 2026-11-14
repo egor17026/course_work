@@ -31,6 +31,9 @@ class Ui_Form(object):
         self.btn_timesheet = QPushButton(Form)
         self.btn_timesheet.setObjectName(u"btn_timesheet")
         self.btn_timesheet.setGeometry(QRect(260, 10, 251, 31))
+        self.btn_logout = QPushButton(Form)
+        self.btn_logout.setObjectName(u"btn_logout")
+        self.btn_logout.setGeometry(QRect(642, 530, 121, 36))
 
         self.retranslateUi(Form)
 
@@ -42,5 +45,6 @@ class Ui_Form(object):
         self.btn_workers.setText(QCoreApplication.translate("Form", u"\u0421\u043f\u0438\u0441\u043e\u043a \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u043e\u0432", None))
         self.btn_orders.setText(QCoreApplication.translate("Form", u"\u041f\u0440\u0438\u043a\u0430\u0437\u044b", None))
         self.btn_timesheet.setText(QCoreApplication.translate("Form", u"\u0422\u0430\u0431\u0435\u043b\u044c", None))
+        self.btn_logout.setText(QCoreApplication.translate("Form", u"\u0412\u044b\u0445\u043e\u0434", None))
     # retranslateUi
 

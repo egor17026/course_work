@@ -230,6 +230,48 @@ class SalaryDB:
         finally:
             conn.close()
 
+    def get_pending_workers(self):
+        """Берет работников, которые ждут подписи (прием или увольнение)"""
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute("""
+                SELECT worker_id, last_name, first_name, middle_name, status
+                FROM workers
+                WHERE status IN ('на согласовании', 'на увольнении')
+            """)
+            return cur.fetchall()
+        finally:
+            conn.close()
+
+    def approve_hire_worker(self, worker_id: int):
+        """Директор подписывает прием на работу"""
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute("UPDATE workers SET status = 'работает' WHERE worker_id = ?", (worker_id,))
+            conn.commit()
+            return True
+        except Exception as e:
+            print(f"Ошибка: {e}")
+            return False
+        finally:
+            conn.close()
+
+    def approve_fire_worker(self, worker_id: int):
+        """Директор подписывает увольнение"""
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute("UPDATE workers SET status = 'уволен', fire_date = CURRENT_DATE WHERE worker_id = ?", (worker_id,))
+            conn.commit()
+            return True
+        except Exception as e:
+            print(f"Ошибка: {e}")
+            return False
+        finally:
+            conn.close()
+
     def add_worker(self, last_name, first_name, position_id, hire_date):
         conn = self.get_connection()
         cur = conn.cursor()
@@ -255,6 +297,48 @@ class SalaryDB:
             return True
         except Exception as e:
             print(f"Ошибка запроса на увольнение: {e}")
+            return False
+        finally:
+            conn.close()
+
+    def add_department(self, name):
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            # Ищем максимальный ID
+            cur.execute("SELECT MAX(department_id) FROM departments")
+            max_id = cur.fetchone()[0]
+            new_id = (max_id + 1) if max_id else 1
+
+            cur.execute("INSERT INTO departments (department_id, department_name) VALUES (?, ?)", (new_id, name))
+            conn.commit()
+            return True
+        except Exception as e:
+            print(f"Ошибка добавления отдела: {e}")
+            return False
+        finally:
+            conn.close()
+
+    def add_position(self, name, oklad, rate):
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute("SELECT MAX(position_id) FROM positions")
+            max_id = cur.fetchone()[0]
+            new_id = (max_id + 1) if max_id else 1
+
+            # Если оклад не введен, ставим 0
+            if not oklad: oklad = 0
+            if not rate: rate = 0
+
+            cur.execute("""
+                INSERT INTO positions (position_id, position_name, oklad, rate)
+                VALUES (?, ?, ?, ?)
+            """, (new_id, name, oklad, rate))
+            conn.commit()
+            return True
+        except Exception as e:
+            print(f"Ошибка добавления должности: {e}")
             return False
         finally:
             conn.close()

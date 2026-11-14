@@ -52,6 +52,19 @@
     <string>Табель</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btn_logout">
+   <property name="geometry">
+    <rect>
+     <x>642</x>
+     <y>530</y>
+     <width>121</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

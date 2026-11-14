@@ -10,6 +10,8 @@ class AccountantWindow(QWidget):
 
         self.db = CreateDatasource()
 
+        self.ui.btn_logout.clicked.connect(self.logout)
+
         self.load_workers()
 
     def load_workers(self):
@@ -23,3 +25,9 @@ class AccountantWindow(QWidget):
             self.ui.tableWidget.setItem(row_idx, 0, QTableWidgetItem(str(worker_id)))
             self.ui.tableWidget.setItem(row_idx, 1, QTableWidgetItem(fio))
             self.ui.tableWidget.setItem(row_idx, 2, QTableWidgetItem(str(position)))
+
+    def logout(self):
+        from widget import Widget
+        self.login_win = Widget()
+        self.login_win.show()
+        self.close()

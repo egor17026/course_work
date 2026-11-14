@@ -25,7 +25,7 @@ class Ui_Form(object):
         Form.resize(936, 549)
         self.btn_calc = QPushButton(Form)
         self.btn_calc.setObjectName(u"btn_calc")
-        self.btn_calc.setGeometry(QRect(800, 120, 103, 36))
+        self.btn_calc.setGeometry(QRect(820, 400, 103, 36))
         self.tableWidget = QTableWidget(Form)
         if (self.tableWidget.columnCount() < 5):
             self.tableWidget.setColumnCount(5)
@@ -40,7 +40,10 @@ class Ui_Form(object):
         __qtablewidgetitem4 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(5, 161, 931, 391))
+        self.tableWidget.setGeometry(QRect(0, 0, 931, 391))
+        self.btn_logout = QPushButton(Form)
+        self.btn_logout.setObjectName(u"btn_logout")
+        self.btn_logout.setGeometry(QRect(820, 510, 103, 36))
 
         self.retranslateUi(Form)
 
@@ -60,5 +63,6 @@ class Ui_Form(object):
         ___qtablewidgetitem3.setText(QCoreApplication.translate("Form", u"\u0414\u043e\u043b\u0436\u043d\u043e\u0441\u0442\u044c", None))
         ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("Form", u"\u0421\u0442\u0430\u0442\u0443\u0441", None))
+        self.btn_logout.setText(QCoreApplication.translate("Form", u"\u0412\u044b\u0445\u043e\u0434", None))
     # retranslateUi
 

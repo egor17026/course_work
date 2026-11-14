@@ -14,6 +14,8 @@ class HRMenu(QWidget):
         self.ui.btn_timesheet.clicked.connect(self.open_timesheet)
         self.ui.btn_orders.clicked.connect(self.open_orders)
 
+        self.ui.btn_logout.clicked.connect(self.logout)
+
     def open_workers(self):
         self.workers_win = HRWindow()
         self.workers_win.show()
@@ -25,3 +27,9 @@ class HRMenu(QWidget):
     def open_orders(self):
         self.orders_win = HROrdersWindow()
         self.orders_win.show()
+
+    def logout(self):
+        from widget import Widget
+        self.login_win = Widget()
+        self.login_win.show()
+        self.close()

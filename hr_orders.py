@@ -1,11 +1,11 @@
 from PySide6.QtWidgets import QWidget, QTableWidgetItem
-from ui_hr_orders import Ui_Form
+from ui_hr_orders import Ui_HROrder
 from SalaryDB import CreateDatasource
 
 class HROrdersWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_Form()
+        self.ui = Ui_HROrder()
         self.ui.setupUi(self)
 
         self.db = CreateDatasource()

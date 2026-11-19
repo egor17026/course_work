@@ -25,6 +25,7 @@
         "hr_orders.ui",
         "hr_orders.py",
         "timesheet.ui",
-        "timesheet_window.py"
+        "timesheet_window.py",
+        "ui_form.py"
     ]
 }

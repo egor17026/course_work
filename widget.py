@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QMessageBox
-from ui_form import Ui_Widget
+from ui_form import Ui_Authorization
 from firebird.driver import connect, driver_config
 from SalaryDB import CreateDatasource
 from admin_window import AdminWindow
@@ -33,7 +33,7 @@ class RDB:
 class Widget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.ui = Ui_Widget()
+        self.ui = Ui_Authorization()
         self.ui.setupUi(self)
 
         self.db = CreateDatasource()

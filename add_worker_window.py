@@ -1,11 +1,11 @@
 from PySide6.QtWidgets import QWidget, QMessageBox
-from ui_addworker import Ui_Form
+from ui_addworker import Ui_AddWorker
 from SalaryDB import CreateDatasource
 
 class AddWorkerWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_Form()
+        self.ui = Ui_AddWorker()
         self.ui.setupUi(self)
 
         self.db = CreateDatasource()

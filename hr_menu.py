@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QWidget
-from ui_hr_menu import Ui_Form
+from ui_hr_menu import Ui_HRMenu
 from hr_window import HRWindow
 from hr_orders import HROrdersWindow
 from timesheet_window import TimesheetWindow
@@ -7,7 +7,7 @@ from timesheet_window import TimesheetWindow
 class HRMenu(QWidget):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_Form()
+        self.ui = Ui_HRMenu()
         self.ui.setupUi(self)
 
         self.ui.btn_workers.clicked.connect(self.open_workers)

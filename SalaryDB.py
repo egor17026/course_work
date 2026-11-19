@@ -327,7 +327,6 @@ class SalaryDB:
             max_id = cur.fetchone()[0]
             new_id = (max_id + 1) if max_id else 1
 
-            # Если оклад не введен, ставим 0
             if not oklad: oklad = 0
             if not rate: rate = 0
 
@@ -357,6 +356,48 @@ class SalaryDB:
         except Exception as e:
             print(f"Ошибка подтверждения увольнения: {e}")
             return False
+        finally:
+            conn.close()
+
+    def calc_salary_and_save(self, worker_id, month_date):
+        """Вызывает процедуру CALC_SALARY и сохраняет результат в PAYROLL"""
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute("SELECT GROSS_SALARY, TAX_AMOUNT, NET_SALARY FROM CALC_SALARY(?, ?)", (worker_id, month_date))
+            result = cur.fetchone()
+
+            if result:
+                gross, tax, net = result
+                cur.execute("SELECT MAX(payroll_id) FROM payroll")
+                max_id = cur.fetchone()[0]
+                new_id = (max_id + 1) if max_id else 1
+
+                cur.execute("""
+                    INSERT INTO payroll (payroll_id, worker_id, period_month, gross_salary, tax_amount, net_salary)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                """, (new_id, worker_id, month_date, gross, tax, net))
+                conn.commit()
+                return gross, tax, net
+            return None
+        except Exception as e:
+            print(f"Ошибка расчета: {e}")
+            return None
+        finally:
+            conn.close()
+
+    def get_payroll_history(self):
+        """Получает историю расчетов для ведомости"""
+        conn = self.get_connection()
+        cur = conn.cursor()
+        try:
+            cur.execute("""
+                SELECT p.payroll_id, w.last_name, w.first_name, p.period_month,
+                       p.gross_salary, p.tax_amount, p.net_salary
+                FROM payroll p
+                JOIN workers w ON p.worker_id = w.worker_id
+            """)
+            return cur.fetchall()
         finally:
             conn.close()
 

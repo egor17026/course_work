@@ -187,7 +187,7 @@ class Ui_AdminWindow(object):
     # setupUi
 
     def retranslateUi(self, AdminWindow):
-        AdminWindow.setWindowTitle(QCoreApplication.translate("AdminWindow", u"Form", None))
+        AdminWindow.setWindowTitle(QCoreApplication.translate("AdminWindow", u"AdminWindow", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("AdminWindow", u"ID", None))
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)

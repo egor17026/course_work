@@ -1,11 +1,11 @@
 from PySide6.QtWidgets import QWidget, QMessageBox
-from ui_add_vacation_sick import Ui_Form
+from ui_add_vacation_sick import Ui_AddVac_Sick
 from SalaryDB import CreateDatasource
 
 class AddAbsenceWindow(QWidget):
     def __init__(self, worker_id):
         super().__init__()
-        self.ui = Ui_Form()
+        self.ui = Ui_AddVac_Sick()
         self.ui.setupUi(self)
 
         self.db = CreateDatasource()

@@ -1,13 +1,13 @@
 from PySide6.QtWidgets import QWidget, QTableWidgetItem
 from SalaryDB import CreateDatasource
-from ui_hrwindow import Ui_Form
+from ui_hrwindow import Ui_HRWindow
 from add_worker_window import AddWorkerWindow
 from add_absence_window import AddAbsenceWindow
 
 class HRWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_Form()
+        self.ui = Ui_HRWindow()
         self.ui.setupUi(self)
 
         self.db = CreateDatasource()

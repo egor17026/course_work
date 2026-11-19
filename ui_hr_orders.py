@@ -19,14 +19,14 @@ from PySide6.QtWidgets import (QApplication, QHBoxLayout, QHeaderView, QSizePoli
     QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
     QWidget)
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        if not Form.objectName():
-            Form.setObjectName(u"Form")
-        Form.resize(649, 555)
-        self.horizontalLayout = QHBoxLayout(Form)
+class Ui_HROrder(object):
+    def setupUi(self, HROrder):
+        if not HROrder.objectName():
+            HROrder.setObjectName(u"HROrder")
+        HROrder.resize(649, 555)
+        self.horizontalLayout = QHBoxLayout(HROrder)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.table = QTabWidget(Form)
+        self.table = QTabWidget(HROrder)
         self.table.setObjectName(u"table")
         self.widget = QWidget()
         self.widget.setObjectName(u"widget")
@@ -52,17 +52,17 @@ class Ui_Form(object):
         self.horizontalLayout.addWidget(self.table)
 
 
-        self.retranslateUi(Form)
+        self.retranslateUi(HROrder)
 
         self.table.setCurrentIndex(1)
 
 
-        QMetaObject.connectSlotsByName(Form)
+        QMetaObject.connectSlotsByName(HROrder)
     # setupUi
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.table.setTabText(self.table.indexOf(self.widget), QCoreApplication.translate("Form", u"\u041e\u0442\u043f\u0443\u0441\u043a\u0430", None))
-        self.table.setTabText(self.table.indexOf(self.tab_2), QCoreApplication.translate("Form", u"\u0411\u043e\u043b\u044c\u043d\u0438\u0447\u043d\u044b\u0435", None))
+    def retranslateUi(self, HROrder):
+        HROrder.setWindowTitle(QCoreApplication.translate("HROrder", u"HROrder", None))
+        self.table.setTabText(self.table.indexOf(self.widget), QCoreApplication.translate("HROrder", u"\u041e\u0442\u043f\u0443\u0441\u043a\u0430", None))
+        self.table.setTabText(self.table.indexOf(self.tab_2), QCoreApplication.translate("HROrder", u"\u0411\u043e\u043b\u044c\u043d\u0438\u0447\u043d\u044b\u0435", None))
     # retranslateUi
 

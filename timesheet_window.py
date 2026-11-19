@@ -1,11 +1,11 @@
 from PySide6.QtWidgets import QWidget, QMessageBox
-from ui_timesheet import Ui_Form
+from ui_timesheet import Ui_TimeSheet
 from SalaryDB import CreateDatasource
 
 class TimesheetWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_Form()
+        self.ui = Ui_TimeSheet()
         self.ui.setupUi(self)
 
         self.db = CreateDatasource()

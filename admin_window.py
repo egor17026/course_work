@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QWidget, QTableWidgetItem
 from ui_adminwindow import Ui_AdminWindow
-from SalaryDB import CreateDatasource  # Импортируем базу
+from SalaryDB import CreateDatasource
 
 class AdminWindow(QWidget):
     def __init__(self):

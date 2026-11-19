@@ -16,53 +16,83 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QHeaderView, QPushButton, QSizePolicy,
-    QTableWidget, QTableWidgetItem, QWidget)
+    QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
+    QWidget)
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        if not Form.objectName():
-            Form.setObjectName(u"Form")
-        Form.resize(936, 549)
-        self.btn_calc = QPushButton(Form)
-        self.btn_calc.setObjectName(u"btn_calc")
-        self.btn_calc.setGeometry(QRect(820, 400, 103, 36))
-        self.tableWidget = QTableWidget(Form)
-        if (self.tableWidget.columnCount() < 5):
-            self.tableWidget.setColumnCount(5)
+class Ui_AccWindow(object):
+    def setupUi(self, AccWindow):
+        if not AccWindow.objectName():
+            AccWindow.setObjectName(u"AccWindow")
+        AccWindow.resize(936, 549)
+        self.verticalLayout = QVBoxLayout(AccWindow)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.tabWidget = QTabWidget(AccWindow)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tab = QWidget()
+        self.tab.setObjectName(u"tab")
+        self.verticalLayout_2 = QVBoxLayout(self.tab)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.table_workers = QTableWidget(self.tab)
+        if (self.table_workers.columnCount() < 4):
+            self.table_workers.setColumnCount(4)
         __qtablewidgetitem = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        self.table_workers.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        self.table_workers.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         __qtablewidgetitem2 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        self.table_workers.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(0, 0, 931, 391))
-        self.btn_logout = QPushButton(Form)
+        self.table_workers.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        self.table_workers.setObjectName(u"table_workers")
+
+        self.verticalLayout_2.addWidget(self.table_workers)
+
+        self.btn_calc = QPushButton(self.tab)
+        self.btn_calc.setObjectName(u"btn_calc")
+
+        self.verticalLayout_2.addWidget(self.btn_calc)
+
+        self.btn_logout = QPushButton(self.tab)
         self.btn_logout.setObjectName(u"btn_logout")
-        self.btn_logout.setGeometry(QRect(820, 510, 103, 36))
 
-        self.retranslateUi(Form)
+        self.verticalLayout_2.addWidget(self.btn_logout)
 
-        QMetaObject.connectSlotsByName(Form)
+        self.tabWidget.addTab(self.tab, "")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.verticalLayout_3 = QVBoxLayout(self.tab_2)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.table_payroll = QTableWidget(self.tab_2)
+        self.table_payroll.setObjectName(u"table_payroll")
+
+        self.verticalLayout_3.addWidget(self.table_payroll)
+
+        self.tabWidget.addTab(self.tab_2, "")
+
+        self.verticalLayout.addWidget(self.tabWidget)
+
+
+        self.retranslateUi(AccWindow)
+
+        self.tabWidget.setCurrentIndex(0)
+
+
+        QMetaObject.connectSlotsByName(AccWindow)
     # setupUi
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.btn_calc.setText(QCoreApplication.translate("Form", u"\u0420\u0430\u0441\u0447\u0438\u0442\u0430\u0442\u044c", None))
-        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Form", u"\u041d\u043e\u0432\u044b\u0439 \u0441\u0442\u043e\u043b\u0431\u0435\u0446", None))
-        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Form", u"ID", None))
-        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Form", u"\u0424\u0418\u041e", None))
-        ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("Form", u"\u0414\u043e\u043b\u0436\u043d\u043e\u0441\u0442\u044c", None))
-        ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("Form", u"\u0421\u0442\u0430\u0442\u0443\u0441", None))
-        self.btn_logout.setText(QCoreApplication.translate("Form", u"\u0412\u044b\u0445\u043e\u0434", None))
+    def retranslateUi(self, AccWindow):
+        AccWindow.setWindowTitle(QCoreApplication.translate("AccWindow", u"AccWindow", None))
+        ___qtablewidgetitem = self.table_workers.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("AccWindow", u"ID", None))
+        ___qtablewidgetitem1 = self.table_workers.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("AccWindow", u"\u0424\u0418\u041e", None))
+        ___qtablewidgetitem2 = self.table_workers.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("AccWindow", u"\u0414\u043e\u043b\u0436\u043d\u043e\u0441\u0442\u044c", None))
+        ___qtablewidgetitem3 = self.table_workers.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("AccWindow", u"\u0421\u0442\u0430\u0442\u0443\u0441", None))
+        self.btn_calc.setText(QCoreApplication.translate("AccWindow", u"\u0420\u0430\u0441\u0447\u0438\u0442\u0430\u0442\u044c", None))
+        self.btn_logout.setText(QCoreApplication.translate("AccWindow", u"\u0412\u044b\u0445\u043e\u0434", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("AccWindow", u"\u0420\u0430\u0441\u0447\u0435\u0442", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("AccWindow", u"\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u044c", None))
     # retranslateUi
 

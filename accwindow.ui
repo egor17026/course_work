@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>AccWindow</class>
+ <widget class="QWidget" name="AccWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,69 +11,72 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>AccWindow</string>
   </property>
-  <widget class="QPushButton" name="btn_calc">
-   <property name="geometry">
-    <rect>
-     <x>820</x>
-     <y>400</y>
-     <width>103</width>
-     <height>36</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Расчитать</string>
-   </property>
-  </widget>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>931</width>
-     <height>391</height>
-    </rect>
-   </property>
-   <column>
-    <property name="text">
-     <string>Новый столбец</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>ID</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>ФИО</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Должность</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Статус</string>
-    </property>
-   </column>
-  </widget>
-  <widget class="QPushButton" name="btn_logout">
-   <property name="geometry">
-    <rect>
-     <x>820</x>
-     <y>510</y>
-     <width>103</width>
-     <height>36</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Выход</string>
-   </property>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Расчет</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QTableWidget" name="table_workers">
+         <column>
+          <property name="text">
+           <string>ID</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>ФИО</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Должность</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Статус</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_calc">
+         <property name="text">
+          <string>Расчитать</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_logout">
+         <property name="text">
+          <string>Выход</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Ведомость</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QTableWidget" name="table_payroll"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
